@@ -1,8 +1,12 @@
 const Nav = () =>{  
 
     return(  
-        <div> 
-            <h1>Nav</h1>
+        <div>  
+            <div class="navContainer">  
+            <h2>logo</h2> 
+            <h2>menu</h2>
+            </div>
+           
         </div>
     )
 }

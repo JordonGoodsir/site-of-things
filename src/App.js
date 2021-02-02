@@ -3,7 +3,9 @@ import { StateContext } from "./config/store";
 import { BrowserRouter, Route } from "react-router-dom";  
 import React, { useReducer } from "react";
 
-import Home from "./pages/Home"  
+import "./styles/styles.scss"
+import Home from "./pages/Home"   
+import Nav from "./components/Nav"
 
 
 
@@ -11,10 +13,11 @@ import Home from "./pages/Home"
 function App() { 
   const [store, dispatch] = useReducer(stateReducer, "");
   return (
-    <div>   
+    <div class="allPages">    
+      <Nav/>
       <StateContext.Provider value={{ store, dispatch }}>
         <BrowserRouter>
-                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/" component={Home} />
         </BrowserRouter>
       </StateContext.Provider>
     </div>
