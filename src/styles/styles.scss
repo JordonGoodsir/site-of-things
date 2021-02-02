@@ -88,8 +88,19 @@
 
 * {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; 
+  color:whitesmoke;
+} 
+
+h1 {
+    font-size: 5.9vw;
+  }
+  h2 {
+    font-size: 3.0vh;
+  }
+  p {
+    font-size: 2vmin;
+  }
 
 .allPages {
   background-color: #252120;

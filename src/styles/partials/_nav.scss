@@ -1,5 +1,32 @@
-.navContainer { 
-    display:flex; 
-    justify-content: space-between; 
-    padding: 10px;
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
+
+.hamburgerMenu {
+  width: 3rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuLineTop,
+.menuLineBottom,
+.menuLineMiddle {
+  height: 2px;
+  width: 100%;
+  background-color: whitesmoke; 
+  transition: 1s
+}
+
+.hamburgerMenu:hover .menuLineTop {  
+    transform: translateY(850%) translateX(24.5%) rotate(60deg); 
+} 
+
+.hamburgerMenu:hover .menuLineMiddle {  
+    transform: translateX(-24.5%) translateY(-100%) rotate(-60deg);  
+} 
+
+ 
