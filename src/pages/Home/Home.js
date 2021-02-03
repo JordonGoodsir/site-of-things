@@ -2,7 +2,10 @@ const Home = () =>{
 
     return(  
         <div class="homeMainHeading"> 
-            <h1>Name</h1>  
+             <div class="logo">
+        <h1>Random</h1>   
+        <h1 class="logoBottom">Projects</h1>  
+        </div> 
         </div>
     )
 }

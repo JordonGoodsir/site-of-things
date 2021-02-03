@@ -1,12 +1,25 @@
 .navContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
+  // align-items: center;
   padding: 20px;
+} 
+
+.logo{ 
+  font-family: $logoFont; 
+  display: flex; 
+  flex-direction: column;  
+  // max-height:1rem;  
+}  
+
+.logoBottom{  
+  margin-top: -15%;
+  margin-left: 25%; 
 }
 
 .hamburgerMenu {
-  width: 3rem;
-  height: 2.5rem;
+  width: 3em;
+  height: 2.5em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,16 +30,15 @@
 .menuLineMiddle {
   height: 2px;
   width: 100%;
-  background-color: whitesmoke; 
-  transition: 1s
+  background-color: whitesmoke;
+  transition: 1s;
 }
 
-.hamburgerMenu:hover .menuLineTop {  
-    transform: translateY(850%) translateX(24.5%) rotate(60deg); 
-} 
 
-.hamburgerMenu:hover .menuLineMiddle {  
-    transform: translateX(-24.5%) translateY(-100%) rotate(-60deg);  
-} 
+.menuLineTopAnmation {
+  transform: translateY(850%) translateX(24.5%) rotate(60deg);
+}
 
- 
+.menuLineMiddleAnmation {
+  transform: translateX(-24.5%) translateY(-100%) rotate(-60deg);
+}

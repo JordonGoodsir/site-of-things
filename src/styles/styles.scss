@@ -1,5 +1,8 @@
+@import "./partials/fontsColors.scss"; 
 @import "./partials/nav.scss";
 @import "./pages/home.scss";
+
+
 
 // /* For mobile phones: */
 [class*="col-"] {
@@ -43,7 +46,8 @@
   }
   .col-s-12 {
     width: 100%;
-  }
+  } 
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -83,16 +87,22 @@
   }
   .col-12 {
     width: 100%;
+  }   
+
+  .menuItem{ 
+    font-size: 5.9vw;
+    padding:5px
   }
+
 }
 
 * {
   margin: 0;
   padding: 0; 
-  color:whitesmoke;
+  color: $white;
 } 
 
-h1 {
+  h1 {
     font-size: 5.9vw;
   }
   h2 {
@@ -103,7 +113,7 @@ h1 {
   }
 
 .allPages {
-  background-color: #252120;
+  background-color: $backgroundColor;
   min-height: 100vh;
   min-width: 100vw;
   overflow: auto; 

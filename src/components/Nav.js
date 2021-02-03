@@ -1,23 +1,46 @@
-const Nav = () =>{  
+import React from "react";
+import { useGlobalState } from "../config/store"
 
-    return(  
-        <div>  
-            <div class="navContainer">  
-            
-            <h2>logo</h2> 
-            
-            <div class="hamburgerMenu">
-            <div class="menuLineTop"></div>   
-            <div class="menuLineMiddle"></div>  
-            <div class="menuLineBottom"></div>
-            </div> 
+const Nav = () => { 
+  const { store, dispatch } = useGlobalState();
+  const { toggled } = store; 
 
-            </div>
-           
+  const triggerTriangle = (event) => {
+    const topLine = document.getElementsByClassName("menuLineTop")[0];
+    const middleLine = document.getElementsByClassName("menuLineMiddle")[0];
+    if (toggled === true) {
+      dispatch({
+        type: "setToggled",
+        data: false,
+      });
+      topLine.classList.remove("menuLineTopAnmation");
+      middleLine.classList.remove("menuLineMiddleAnmation");
+    } else {
+      dispatch({
+        type: "setToggled",
+        data: true,
+      });
+      topLine.classList.add("menuLineTopAnmation");
+      middleLine.classList.add("menuLineMiddleAnmation");
+    }
+  };
+
+  return (
+    <div>
+      <div class="navContainer"> 
+        <div class="logo">
+        <h5>Random</h5>   
+        <h5 class="logoBottom">Projects</h5>  
         </div>
-    )
-}
 
+        <div class="hamburgerMenu" onClick={triggerTriangle}>
+          <div class="menuLineTop"></div>
+          <div class="menuLineMiddle"></div>
+          <div class="menuLineBottom"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-export default Nav
+export default Nav;
