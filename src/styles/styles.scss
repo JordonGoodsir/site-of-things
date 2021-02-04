@@ -99,7 +99,7 @@
 * {
   margin: 0;
   padding: 0; 
-  color: $white;
+  color: $white; 
 } 
 
   h1 {
@@ -118,5 +118,6 @@
   min-width: 100vw;
   overflow: auto; 
   display: flex; 
-  flex-direction: column;
+  flex-direction: column; 
+  z-index:1;
 }
