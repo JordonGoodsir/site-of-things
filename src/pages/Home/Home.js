@@ -8,7 +8,7 @@ const Home = () => {
     width: Math.floor(Math.random() * 5 + 1) + "em",
     clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
     animationDelay: `${Math.floor(Math.random() * 3 + 1)}s`,
-    animationDuration: "21s",
+    animationDuration: "40s",
     zIndex: 1,
     top: "30%",
     animationName:"spin",
@@ -21,7 +21,7 @@ const Home = () => {
     width: Math.floor(Math.random() * 5 + 1) + "em",
     clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
     animationDelay: `${Math.floor(Math.random() * 3 + 1)}s`,
-    animationDuration: "21s",
+    animationDuration: "40s",
     zIndex: 1,
     top: "80%",
     animationName:"otherWay",
@@ -38,9 +38,15 @@ const Home = () => {
       <div id="triangleContainer">
         <li style={randTriangeStyleTop}></li>
         <li style={randTriangeStyleTop}></li>
+        <li style={randTriangeStyleTop}></li>  
+        <li style={randTriangeStyleTop}></li> 
+        <li style={randTriangeStyleTop}></li> 
         <li style={randTriangeStyleTop}></li>
         <li style={randTriangeStyleBottom}></li>
         <li style={randTriangeStyleBottom}></li>
+        <li style={randTriangeStyleBottom}></li> 
+        <li style={randTriangeStyleBottom}></li> 
+        <li style={randTriangeStyleBottom}></li> 
         <li style={randTriangeStyleBottom}></li>
         {[...Array(20).keys()].map((v, i) => {
           return (
@@ -49,8 +55,8 @@ const Home = () => {
                 height: `${Math.floor(Math.random() * 5 + 1)}em`,
                 width: Math.floor(Math.random() * 5 + 1) + "em",
                 clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-                animationDelay: `${Math.floor(Math.random() * 21 + 1)}s`,
-                animationDuration: "21s",
+                animationDelay: `${Math.floor(Math.random() * 40 + 1)}s`,
+                animationDuration: "40s, 40s",
                 zIndex: 1,
                 top: v % 2 === 0 ? "30%" : "80%",
                 animationName: v % 2 === 0 ? "spin" : "otherWay",
