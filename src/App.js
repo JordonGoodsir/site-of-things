@@ -6,7 +6,8 @@ import React, { useReducer } from "react";
 import "./styles/styles.scss";
 import HomeController from "./pages/Home/HomeController";
 import Nav from "./components/Nav";  
-import Wheel from "./pages/Wheel/wheel"
+import Wheel from "./pages/Wheel/wheel" 
+import notsAndCrosses from "./pages/notsAndCrosses/notsAndCrosses"
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
         <BrowserRouter> 
         <Nav />
           <Route exact path="/" component={HomeController} />  
-          <Route exact path="/wheel" component={Wheel} /> 
+          <Route exact path="/wheel" component={Wheel} />  
+          <Route exact path="/knotsAndCrosses" component={notsAndCrosses} /> 
         </BrowserRouter>
       </StateContext.Provider>
     </div>

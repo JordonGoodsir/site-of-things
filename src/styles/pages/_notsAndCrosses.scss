@@ -1,0 +1,22 @@
+.knotsPage {   
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    flex-grow: 1;
+  
+} 
+
+.square { 
+    background-color: whitesmoke; 
+    height: 4rem; 
+    width: 4rem;
+} 
+
+.boardAlignment { 
+    display: flex; 
+    flex-direction: column; 
+    font-size: 5rem; 
+    line-height: 0.5; 
+    letter-spacing: -0.39rem;
+
+}
