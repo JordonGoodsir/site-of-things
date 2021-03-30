@@ -30,30 +30,31 @@ const Board = () => {
 
           if (
             document.getElementById(`${parseInt(event.target.id) - 3}`)
-              .innerHTML == x &&
+              .innerHTML === x &&
             document.getElementById(`${parseInt(event.target.id) + 3}`)
-              .innerHTML == x
+              .innerHTML === x
           ) {
             console.log("toggle winning");
           }
         } else if (parseInt(event.target.id) - 3 >= 0) {
           console.log("check up");
           let count = 0;
-          for (let i = event.target.id; i > event.target.id - 6; i -= 3) {
+          for (let i = event.target.id; i > event.target.id - 7; i -= 3) {
             if (document.getElementById(i).innerHTML === x) {
-              count += 1;
+              count += 1; 
+              console.log(count)
             }
           }
 
-          count === 2 ? console.log("toggle winning") : console.log(":/");
-        } else if (parseInt(event.target.id) + 3 <= 8) {
+          count === 3 ? console.log("toggle winning") : console.log(":/");
+        } else if (parseInt(event.target.id) + 3 <= 9) {
           console.log("check down");
 
           let count = 0;
 
           for (
             let i = parseInt(event.target.id);
-            i < parseInt(event.target.id) + 6;
+            i < parseInt(event.target.id) + 7;
             i += 3
           ) {
             if (document.getElementById(i).innerHTML === x) {
@@ -61,7 +62,25 @@ const Board = () => {
             }
           }
 
-          count === 2 ? console.log("toggle winning") : console.log(":/");
+          count === 3 ? console.log("toggle winning") : console.log(":/");
+        } 
+ 
+
+        let dummy = false
+        // register diagonal win 
+        if(parseInt(event.target.id) - 4 >= 0 && parseInt(event.target.id) + 4 <= 8 ){  
+          console.log("checking middle diagonals")
+
+        } else if(parseInt(event.target.id) - 4 >= 0 && parseInt(event.target.id) - 8 >= 0){  
+          console.log("checking up left diagonals")
+
+        } else if(parseInt(event.target.id) - 2 >= 0 && parseInt(event.target.id) - 4 >= 0){  
+          console.log("checking up right diagonals")
+        } 
+        else if(dummy) { 
+
+        } else if(dummy) { 
+
         }
       }
     } else {
@@ -78,22 +97,23 @@ const Board = () => {
 
           if (
             document.getElementById(`${parseInt(event.target.id) - 3}`)
-              .innerHTML == o &&
+              .innerHTML === o &&
             document.getElementById(`${parseInt(event.target.id) + 3}`)
-              .innerHTML == o
+              .innerHTML === o
           ) {
             console.log("toggle winning");
           }
         } else if (parseInt(event.target.id) - 3 >= 0) {
           console.log("check up");
           let count = 0;
-          for (let i = event.target.id; i > event.target.id - 6; i -= 3) {
-            if (document.getElementById(i).innerHTML === o) {
-              count += 1;
+          for (let i = event.target.id; i > event.target.id - 7; i -= 3) {
+            if (document.getElementById(i).innerHTML === o) { 
+              console.log(i)
+              count += 1; 
             }
           }
 
-          count === 2 ? console.log("toggle winning") : console.log(":/");
+          count === 3 ? console.log("toggle winning") : console.log(":/");
         } else if (parseInt(event.target.id) + 3 <= 8) {
           console.log("check down");
 
@@ -101,7 +121,7 @@ const Board = () => {
 
           for (
             let i = parseInt(event.target.id);
-            i < parseInt(event.target.id) + 6;
+            i < parseInt(event.target.id) + 7;
             i += 3
           ) {
             if (document.getElementById(i).innerHTML === o) {
@@ -109,7 +129,7 @@ const Board = () => {
             }
           }
 
-          count === 2 ? console.log("toggle winning") : console.log(":/");
+          count === 3 ? console.log("toggle winning") : console.log(":/");
         }
       }
     }
