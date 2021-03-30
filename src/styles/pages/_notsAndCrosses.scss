@@ -57,9 +57,23 @@
     border-left: 0px solid;  
 }  
 
-.centerPiece { 
+.centerPeice { 
     display:flex; 
     justify-content: center; 
-    align-items: center;
+    align-items: center;  
+    font-family: $knotsFont;
+} 
+
+.interface { 
+    display:grid; 
+    grid-template-columns: repeat(3, 1fr);
+} 
+
+.players { 
+    display: flex;  
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    font-family: $knotsFont;
 }
 

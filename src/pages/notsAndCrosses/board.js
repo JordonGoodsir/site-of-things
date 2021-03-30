@@ -18,18 +18,27 @@ const Board = () => {
     const turn = (event) =>{  
       event.preventDefault() 
 
-      if (player1) { 
+      if (player1) {  
+        if(event.target.innerHTML === ""){
         event.target.innerHTML = "X" 
-        setPlayer1(false)
+        setPlayer1(false) 
+      }
       } else {  
+        if(event.target.innerHTML === ""){ 
         event.target.innerHTML = "O" 
-        setPlayer1(true)
+        setPlayer1(true) 
+        }
       }
       console.log(event.target)
     }
 
     
-    return (
+    return ( 
+      <div class="interface"> 
+      <div class="player1 players"> 
+      <h2>Player 1</h2>   
+      <h2 id="x">X</h2>
+      </div>
   <div class="boardAlignment">   
     {/* { 
     board.map((v)=> {  
@@ -37,7 +46,7 @@ const Board = () => {
   })
     }    */}
 
-    <div class="boardGrid centerPeice" onClick={turn}>  
+    <div class="boardGrid">  
     <div class="tl centerPeice" onClick={turn}></div> 
     <div class="tm boardSquare centerPeice" onClick={turn}></div>
     <div class="tr centerPeice" onClick={turn}></div>
@@ -47,8 +56,16 @@ const Board = () => {
     <div class="bl centerPeice" onClick={turn}></div> 
     <div class="bm boardSquare centerPeice" onClick={turn}></div>
     <div class="br centerPeice"  onClick={turn}></div>
-    </div> 
+    </div>  
+
+
     
+    </div>  
+    <div class="player2 players"> 
+    <h2>Player 2</h2> 
+    <h2 id="o">O</h2>
+    </div>
+ 
     </div>
     );
   };
