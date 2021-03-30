@@ -6,7 +6,7 @@ export default function (state, action) {
         ...state,
         toggled: action.data,
       }; 
-    } 
+    }   
     
     default:
       return state;
