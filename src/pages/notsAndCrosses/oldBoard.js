@@ -142,12 +142,6 @@ const Board = () => {
       <div class="player1 players">
         <h2>Player 1</h2>
         <h2 id="x">X</h2> 
-        {Array(9).fill(null).map((v,i) =>{ 
-          return (<div> 
-            {"d"}
-          </div>)
-        })} 
-       
       </div>
       <div class="boardAlignment">
 

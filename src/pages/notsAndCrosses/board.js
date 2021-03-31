@@ -17,7 +17,19 @@ if(winner(boardPeices)) {
   
   boardPeices.splice(parseInt(index),1,piece) 
   
-  player1 === true ? setplayer1(false) : setplayer1(true) 
+  // player1 === true ? setplayer1(false) : setplayer1(true) 
+
+  if (player1 === true) { 
+    setplayer1(false)  
+    document.getElementById("o").style.color = "#1a9b69"; 
+    document.getElementById("x").style.color = "white"; 
+    
+  } else{ 
+    setplayer1(true)  
+    document.getElementById("x").style.color = "#1a9b69"; 
+    document.getElementById("o").style.color = "white";
+
+  }
 
 }
 }  
@@ -55,12 +67,29 @@ const wipeBoard = () =>{
 
     return (
   <div class="knotsPage">  
+
+    <div class="interface">
+      
+      <div class="player1 players">
+        <h2>Player 1</h2>
+        <h2 id="x">X</h2> 
+      </div>  
+  
   <div class="boardGrid">
   {boardPeices.map((v,i) =>{ 
     return <div class="squares" index={i} onClick={playerTurn}>{v}</div>
-  })}  
-  </div> 
+  })}   
+  </div>  
+
+  <div class="player2 players">
+        <h2>Player 2</h2>
+        <h2 id="o">O</h2>
+      </div> 
+
+  </div>  
+
   {winner(boardPeices) ? <div class="winningPopUp"><h2 class="winner">{winner(boardPeices)} WINS!</h2><div onClick={wipeBoard} class="playAgain">Play Again?</div></div> : <div></div> }
+
   </div>
     );
   };
