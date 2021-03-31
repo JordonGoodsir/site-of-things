@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center; 
     align-items: center;   
-    flex-grow: 1;
+    flex-grow: 1; 
+    flex-direction: column;
   
 } 
 
@@ -80,5 +81,47 @@
 
 #x { 
     color:#1a9b69
+} 
+
+// new board  
+.squares{ 
+    border: 1px solid whitesmoke;
+    display: flex;  
+    justify-content: center;
+    align-items: center;  
+    height: 10rem; 
+    width: 10rem;  
+    font-size: 5rem;  
+    font-family: $knotsFont;
+
+} 
+
+.winningPopUp { 
+    padding-top: 1rem;
+    display:flex;  
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+} 
+
+.playAgain{ 
+    border: 1px whitesmoke solid;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem; 
+    transition: 0.3s; 
+    font-family: $knotsFont; 
+    margin-top: 1rem
+} 
+
+.playAgain:hover{   
+    border: 1px #1a9b69 solid; 
+    color: #1a9b69
+} 
+
+.winner {  
+    font-family: $knotsFont;  
+    font-size: 3rem; 
 }
+
 
