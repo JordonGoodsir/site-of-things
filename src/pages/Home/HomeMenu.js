@@ -1,3 +1,6 @@
+import { Link} from "react-router-dom";
+
+
 const HomeMenu = () =>{  
 
     return(  
@@ -6,7 +9,7 @@ const HomeMenu = () =>{
             
             <h1 class="menuItem menuHoverable"><u>Projects</u></h1>   
           
-            <h2 class="menuItem menuHoverable">Project</h2>   
+            <Link to="/knotsAndCrosses"><h2 class="menuItem menuHoverable">Knots & Crosses</h2></Link>
 
             <h2 class="menuItem menuHoverable">Project</h2>  
 

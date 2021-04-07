@@ -1,5 +1,7 @@
 import React from "react";
-import { useGlobalState } from "../config/store"
+import { useGlobalState } from "../config/store" 
+import { Link} from "react-router-dom";
+
 
 const Nav = () => { 
   const { store, dispatch } = useGlobalState();
@@ -28,10 +30,10 @@ const Nav = () => {
   return (
     <div>
       <div class="navContainer"> 
-        <div class="logo">
+        <Link to="/"><div class="logo">
         <h5>Random</h5>   
         <h5 class="logoBottom">Projects</h5>  
-        </div>
+        </div></Link>
 
         <div class="hamburgerMenu" onClick={triggerTriangle}>
           <div class="menuLineTop"></div>
