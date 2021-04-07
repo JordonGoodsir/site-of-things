@@ -7,7 +7,11 @@ import "./styles/styles.scss";
 import HomeController from "./pages/Home/HomeController";
 import Nav from "./components/Nav";  
 import Wheel from "./pages/Wheel/wheel" 
-import notsAndCrosses from "./pages/notsAndCrosses/notsAndCrosses"
+import notsAndCrosses from "./pages/notsAndCrosses/notsAndCrosses"   
+import HomeMenu from "./pages/Home/HomeMenu" 
+
+
+
 
 
 function App() {
@@ -15,17 +19,25 @@ function App() {
     toggled: false,
   };
 
-  const [store, dispatch] = useReducer(stateReducer, initialState); 
+  const [store, dispatch] = useReducer(stateReducer, initialState);  
+  const { toggled } = store;  
 
   return (
     <div class="allPages">
-      <StateContext.Provider value={{ store, dispatch }}>
+      <StateContext.Provider value={{ store, dispatch }}> 
+     
+      
         <BrowserRouter> 
-        <Nav />
+        <Nav /> 
+        {toggled ? <HomeMenu/> :  
+        <>
           <Route exact path="/" component={HomeController} />  
           <Route exact path="/wheel" component={Wheel} />  
-          <Route exact path="/knotsAndCrosses" component={notsAndCrosses} /> 
-        </BrowserRouter>
+          <Route exact path="/knotsAndCrosses" component={notsAndCrosses} />   
+          </>
+        }
+        </BrowserRouter> 
+        
       </StateContext.Provider>
     </div>
   );
