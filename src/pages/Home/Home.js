@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import {getWord} from "../../services/storyServices"
 
-const Home = () => { 
+const Home = () => {  
+
 
 
   const randTriangeStyleTop = {
@@ -27,14 +29,16 @@ const Home = () => {
     animationName:"otherWay",
     animationIterationCount: "infinite", 
     transitionTimingFunction: "linear"
-  };
+  }; 
+
+  getWord() 
 
   return (
     <div class="homeMainHeading">
       <div class="logo">
         <h1>Random</h1>
         <h1 class="logoBottom">Projects</h1>
-      </div>
+      </div> 
       <div id="triangleContainer">
         <li style={randTriangeStyleTop}></li>
         <li style={randTriangeStyleTop}></li>
