@@ -8,7 +8,8 @@ import HomeController from "./pages/Home/HomeController";
 import Nav from "./components/Nav";  
 import Wheel from "./pages/Wheel/wheel" 
 import notsAndCrosses from "./pages/notsAndCrosses/notsAndCrosses"   
-import HomeMenu from "./pages/Home/HomeMenu" 
+import HomeMenu from "./pages/Home/HomeMenu"  
+import Story from "./pages/story/story.js"
 
 
 
@@ -33,7 +34,9 @@ function App() {
         <>
           <Route exact path="/" component={HomeController} />  
           <Route exact path="/wheel" component={Wheel} />  
-          <Route exact path="/knotsAndCrosses" component={notsAndCrosses} />   
+          <Route exact path="/knotsAndCrosses" component={notsAndCrosses} />    
+          <Route exact path="/story" component={Story} />   
+
           </>
         }
         </BrowserRouter> 

@@ -14,9 +14,12 @@
 
 import api from "../config/api"; 
 
-const getWord = async () => {
-    const response = await api.get("/story");
-    return response.data;
+const getWord = async () => { 
+  console.log("hit")
+    const response = await api.get("/story");  
+    const wordObj = response.data[0]
+    console.log(wordObj)
+    return wordObj;
   };
 
 

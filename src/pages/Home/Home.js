@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-import {getWord} from "../../services/storyServices"
 
 const Home = () => {  
-
-   getWord()
 
   const randTriangeStyleTop = {
     height: `${Math.floor(Math.random() * 5 + 1)}em`,
@@ -31,7 +28,6 @@ const Home = () => {
     transitionTimingFunction: "linear"
   }; 
 
-  getWord() 
 
   return (
     <div class="homeMainHeading">
