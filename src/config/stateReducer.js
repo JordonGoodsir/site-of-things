@@ -6,6 +6,13 @@ export default function (state, action) {
         ...state,
         toggled: action.data,
       }; 
+    }    
+
+    case "setWords": {
+      return {
+        ...state,
+        words: action.data,
+      }; 
     }   
     
     default:

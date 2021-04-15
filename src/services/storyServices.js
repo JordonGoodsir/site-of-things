@@ -16,10 +16,17 @@ import api from "../config/api";
 
 const getWord = async () => { 
   console.log("hit")
-    const response = await api.get("/story");  
-    const wordObj = response.data[0]
-    console.log(wordObj)
-    return wordObj;
+    // const response = await api.get("/story");   
+
+    // return response.data
+
+    await api.get("/story") 
+    .then((response)=>{ 
+      console.log(response.data[0].word)  
+      return response.data
+    }) 
+    // return "hello"
+
   };
 
 
