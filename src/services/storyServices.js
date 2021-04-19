@@ -27,7 +27,12 @@ const getWord = async () => {
     }) 
     // return "hello"
 
-  };
+  }; 
+
+  const getStory = async() =>{  
+    await api.get("/getStory")
+
+  }
 
 
 export {getWord}
