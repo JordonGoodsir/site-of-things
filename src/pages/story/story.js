@@ -1,68 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { useGlobalState } from "../../config/store"  
+import React, { useState, useEffect } from "react";
+import { useGlobalState } from "../../config/store";
 
-import MakeStory from "./makeStory" 
-import {getWord} from "../../services/storyServices" 
-import api from "../../config/api"; 
+import MakeStory from "./makeStory";
+import { getWord, getStory, postStory } from "../../services/storyServices";
+import api from "../../config/api";
+
+const Story = () => {
+  const { store, dispatch } = useGlobalState();
+  const { words } = store;
+
+  const [menuStatus, setMenuStatus] = useState(false);
+  let [stories, setStories] = useState([]);
+  let [wordsStore, setWordsStore] = useState("");
+
+  useEffect(() => {
+    extractStories();
+    // renderWords()
+    // console.log(test)
+  }, []);
+
+  const openCreateMenu = async () => { 
 
 
-
-
-
-
-const Story = () =>{  
-    const { store,dispatch } = useGlobalState();
-    const { words } = store;  
-    
-    const [menuStatus, setMenuStatus] = useState(false); 
-    let [test, setTest] = useState("");
-
-
-    useEffect(() => {
-        renderWords() 
-        console.log(test)
-      });
-
-    const openCreateMenu =  () =>{  
-        menuStatus ? setMenuStatus(false) : setMenuStatus(true)  
-        
-    //     dispatch({
-    //         type: "setWords",
-    //         data: getWord() 
-    //           .then((data)=>{  
-    //         console.log(data)
-    //         return data
-    //     }) ,
-    //       }); 
-
-    //       console.log(typeof words)
-
-    //   console.log(words)
-    }  
-
-    const renderWords = async() =>{ 
-        await api.get("/story") 
-        .then((response)=>{  
-            test = [response.data]  
-            
-            // setTest(test)
-console.log(test)          
-            
-        //   return response.data[0].word 
-        })
+    let tempWordStore = [];
+    for (let i = 0; i < 5; i++) {
+     tempWordStore.push(await getWord());
     }
+    console.log("hello");
+    console.log(tempWordStore);
+    // setWordsStore(tempWordStore)
+    dispatch({
+      type: "setWords",
+      data: tempWordStore,
+    }); 
+
+    menuStatus ? setMenuStatus(false) : setMenuStatus(true);
 
 
-    return(  
-        <div>   
-        <h1>story page</h1>  
-        { 
-      console.log(test)
-        }  
-        <div>{menuStatus ? <MakeStory/> : ""}</div>
-        <button onClick={openCreateMenu}>make Story</button>
-        </div>
-    )
-}
+  };
 
-export default Story
+  const extractStories = () => {
+    getStory() 
+    .then((story) => {
+      setStories(story);
+    });
+  };
+
+  return (
+    <div>
+      <h1>story page</h1>
+      <div>{menuStatus ? <MakeStory /> : ""}</div>
+      {stories.map((v, i) => {
+        return (
+          <div>
+            <h2>{v.title}</h2>
+            <h2>{v.wordPrompts}</h2>
+            <p>{v.body}</p>
+          </div>
+        );
+      })}
+      <button onClick={openCreateMenu}>make Story</button>
+    </div>
+  );
+};
+
+export default Story;

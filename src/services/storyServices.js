@@ -12,27 +12,25 @@
 //     .catch(console.log)
 // }   
 
-import api from "../config/api"; 
+import api from "../config/api";  
+
+const postStory = async (story) =>{   
+  const response = await api.post(`/story`, story);
+  return response.data;
+
+
+}
 
 const getWord = async () => { 
-  console.log("hit")
-    // const response = await api.get("/story");   
-
-    // return response.data
-
-    await api.get("/story") 
-    .then((response)=>{ 
-      console.log(response.data[0].word)  
-      return response.data
-    }) 
-    // return "hello"
-
+    const response = await api.get("/story")  
+    // console.log(response.data) 
+    return response.data
   }; 
 
   const getStory = async() =>{  
-    await api.get("/getStory")
-
+    const response = await api.get("story/getStory")  
+    return response.data
   }
 
 
-export {getWord}
+export {getWord,getStory,postStory}
