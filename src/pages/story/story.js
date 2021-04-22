@@ -3,7 +3,8 @@ import { useGlobalState } from "../../config/store";
 
 import MakeStory from "./makeStory";
 import { getWord, getStory, postStory } from "../../services/storyServices";
-import api from "../../config/api";
+import api from "../../config/api"; 
+
 
 const Story = () => {
   const { store, dispatch } = useGlobalState();
@@ -22,17 +23,20 @@ const Story = () => {
   const openCreateMenu = async () => { 
 
 
-    let tempWordStore = [];
-    for (let i = 0; i < 5; i++) {
-     tempWordStore.push(await getWord());
+    if (!menuStatus) { 
+        let tempWordStore = [];
+        for (let i = 0; i < 5; i++) {
+         tempWordStore.push(await getWord());
+        }
+        console.log("hello");
+        console.log(tempWordStore);
+        // setWordsStore(tempWordStore) 
+        dispatch({
+          type: "setWords",
+          data: tempWordStore,
+        }); 
     }
-    console.log("hello");
-    console.log(tempWordStore);
-    // setWordsStore(tempWordStore)
-    dispatch({
-      type: "setWords",
-      data: tempWordStore,
-    }); 
+
 
     menuStatus ? setMenuStatus(false) : setMenuStatus(true);
 
@@ -59,7 +63,8 @@ const Story = () => {
           </div>
         );
       })}
-      <button onClick={openCreateMenu}>make Story</button>
+      <button onClick={openCreateMenu}>make Story</button> 
+
     </div>
   );
 };

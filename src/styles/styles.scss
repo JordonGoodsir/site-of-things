@@ -120,7 +120,7 @@
   background-color: $backgroundColor;
   min-height: 100vh;
   min-width: 100vw;
-  overflow: auto; 
+  overflow: hidden; 
   display: flex; 
   flex-direction: column; 
   z-index:1;

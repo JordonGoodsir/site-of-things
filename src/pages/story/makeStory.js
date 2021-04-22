@@ -1,51 +1,52 @@
-import { useGlobalState } from "../../config/store"   
-import {postStory} from "../../services/storyServices" 
+import { useGlobalState } from "../../config/store";
+import { postStory } from "../../services/storyServices";
+import { Draggable, DraggableCore } from "react-draggable"; // The default
 
+const MakeStory = () => {
+  const { store } = useGlobalState();
+  const { words } = store;
 
-
-const MakeStory = () =>{   
-    const { store } = useGlobalState();
-    const { words } = store;   
-    
-// let words = [] 
-
-// words.push(getWord()) 
-
-// console.log(words[0]) 
-
-const sendStory = (event) =>{  
+  const sendStory = (event) => {
     // event.preventDefault()
     event.preventDefault();
-    console.log(event.target.title.value)  
+    console.log(event.target.title.value);
 
-    const storyObj = { 
-        title:event.target.title.value,  
-        // wordPrompts:event.target.title.value
-        body: event.target.body.value
-    } 
+    const storyObj = {
+      title: event.target.title.value,
+      wordPrompts: words,
+      body: event.target.body.value,
+    };
 
-    console.log(words[0])
+    postStory(storyObj);
 
+    console.log(words[0]);
+  };
 
+  return (
+    <div>
+      <Draggable>
+        <div class="makeStoryForm">
+          <form onSubmit={sendStory} class="makeStoryCard">
+            <div class="closeTab">X</div>
 
-}
+            <h2 class="wordPropmtsTitle">Word prompts</h2>
+            <div class="wordPrompts">
+              {words.map((v, i) => {
+                return <p class="word">{v}</p>;
+              })}
+            </div>
+            <h2 for="title">Story Title:</h2>
+            <input class="formField" type="text" name="title" required></input>
 
-    return(  
-        <div>   
-            <form onSubmit={sendStory} class="makeStoryCard">   
+            <h2 for="story">Story:</h2>
+            <textarea class="formField" name="body" required></textarea>
 
-            Word prompts  
-            <label for="title">Story Title:</label>
-            <input type="text" name="title"></input>  
-
-            <label for="story">Story:</label>
-            <textarea name="story"></textarea>   
-
-            <input type="submit" value="Submit"></input>
-            </form> 
-
+            <input class="storySubmit" type="submit" value="Submit"></input>
+          </form>
         </div>
-    )
-}
+      </Draggable>
+    </div>
+  );
+};
 
-export default MakeStory
+export default MakeStory;
