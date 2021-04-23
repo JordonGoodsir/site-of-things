@@ -3,7 +3,7 @@ import { postStory } from "../../services/storyServices";
 import { Draggable, DraggableCore } from "react-draggable"; // The default
 
 const MakeStory = () => {
-  const { store } = useGlobalState();
+  const { store,dispatch } = useGlobalState();
   const { words } = store;
 
   const sendStory = (event) => {
@@ -17,17 +17,33 @@ const MakeStory = () => {
       body: event.target.body.value,
     };
 
-    postStory(storyObj);
+    postStory(storyObj); 
+    
+    dispatch({
+      type: "setStoryMenuStatus",
+      data: false,
+    }) 
 
     console.log(words[0]);
-  };
+  }; 
+
+  const closeStoryMenu = () =>{  
+
+    dispatch({
+      type: "setStoryMenuStatus",
+      data: false,
+    }) 
+
+  }
 
   return (
     <div>
       <Draggable>
         <div class="makeStoryForm">
           <form onSubmit={sendStory} class="makeStoryCard">
-            <div class="closeTab">X</div>
+            <div class="closeTab"> 
+            <div onClick={closeStoryMenu} class="closeButton">X</div> 
+            </div>
 
             <h2 class="wordPropmtsTitle">Word prompts</h2>
             <div class="wordPrompts">

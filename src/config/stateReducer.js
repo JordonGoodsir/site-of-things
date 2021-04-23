@@ -13,7 +13,14 @@ export default function (state, action) {
         ...state,
         words: action.data,
       }; 
-    }   
+    }    
+
+    case "setStoryMenuStatus" :{ 
+      return {
+        ...state,
+        storyMenuStatus: action.data,
+      }; 
+    }
     
     default:
       return state;

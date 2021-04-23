@@ -8,29 +8,22 @@ import api from "../../config/api";
 
 const Story = () => {
   const { store, dispatch } = useGlobalState();
-  const { words } = store;
+  const { words,storyMenuStatus } = store;
 
-  const [menuStatus, setMenuStatus] = useState(false);
   let [stories, setStories] = useState([]);
-  let [wordsStore, setWordsStore] = useState("");
 
   useEffect(() => {
     extractStories();
-    // renderWords()
-    // console.log(test)
+
   }, []);
 
   const openCreateMenu = async () => { 
 
-
-    if (!menuStatus) { 
+    if (!storyMenuStatus) { 
         let tempWordStore = [];
         for (let i = 0; i < 5; i++) {
          tempWordStore.push(await getWord());
         }
-        console.log("hello");
-        console.log(tempWordStore);
-        // setWordsStore(tempWordStore) 
         dispatch({
           type: "setWords",
           data: tempWordStore,
@@ -38,9 +31,21 @@ const Story = () => {
     }
 
 
-    menuStatus ? setMenuStatus(false) : setMenuStatus(true);
 
+if(storyMenuStatus) {  
+  dispatch({
+    type: "setStoryMenuStatus",
+    data: false,
+  }) 
+} else{  
+  console.log("hello")
+  dispatch({
+    type: "setStoryMenuStatus",
+    data: true,
+  }); 
+}
 
+  
   };
 
   const extractStories = () => {
@@ -53,19 +58,49 @@ const Story = () => {
   return (
     <div>
       <h1>story page</h1>
-      <div>{menuStatus ? <MakeStory /> : ""}</div>
+      <div>{storyMenuStatus ? <MakeStory /> : ""} 
+      </div> 
+      
+      <div class="storyCardGrid">
       {stories.map((v, i) => {
         return (
-          <div>
-            <h2>{v.title}</h2>
-            <h2>{v.wordPrompts}</h2>
-            <p>{v.body}</p>
+          <div class="storyCard">
+            <h2 class="storyTitle"> Title: {v.title}</h2>
+            <h3 class="storyWords">Prompts: {v.wordPrompts.join("  ")}</h3> 
+            <br></br>
+            <p class="storyBody">{v.body}</p>
           </div>
         );
-      })}
-      <button onClick={openCreateMenu}>make Story</button> 
+      })} 
+      </div> 
+      <button onClick={openCreateMenu}>make Story</button>  
 
-    </div>
+     <div class="bookContainer">
+      <div class="loading"> 
+     
+      <div class="brownBit1"> 
+      <div class="page1">  
+      ------------------------------
+      </div> 
+
+      <div class="extraPage1"> 
+        ------------------------------  
+      </div> 
+      </div> 
+      
+      <div class="brownBit2">  
+      
+      <div class="page2"> 
+      ------------------------------
+      </div>  
+
+
+      </div>
+     
+      </div>  
+      </div> 
+
+    </div> 
   );
 };
 

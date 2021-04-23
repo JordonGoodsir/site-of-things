@@ -17,7 +17,8 @@ import Story from "./pages/story/story.js"
 
 function App() {
   const initialState = {
-    toggled: false,
+    toggled: false, 
+    storyMenuStatus:false
   };
 
   const [store, dispatch] = useReducer(stateReducer, initialState);  

@@ -63,38 +63,128 @@ textArea{
     display: flex; 
     align-items: center; 
     justify-content: flex-end;  
-    z-index: 2;
+    z-index: 2; 
+    cursor:move;
+}  
+
+.storyCard { 
+    overflow:auto;
+    display:flex; 
+    flex-direction: column; 
+    width:90%; 
+    word-wrap: break-word;
+
 } 
 
-.flexible-modal {
-    position: absolute;
-    z-index: 1;
-    border: 1px solid #ccc;
-    background: white;
-  }
-  .flexible-modal-mask {
-    position: fixed;
-    height: 100%;
-    background: rgba(55, 55, 55, 0.6);
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-  }
-  .flexible-modal-resizer {
-    position:absolute;
-    right:0;
-    bottom:0;
-    cursor:se-resize;
-    margin:5px;
-    border-bottom: solid 2px #333;
-    border-right: solid 2px #333;
-  }
-  .flexible-modal-drag-area{
-    background: rgba(22, 22, 333, 0.2);
-    height: 50px;
-    position:absolute;
-    right:0;
-    top:0;
-    cursor:move;
-  }
+.storyCardGrid{ 
+    display:grid; 
+    row-gap:20%;   
+    grid-template-columns: repeat(3, 1fr); 
+    justify-items: center;
+
+}  
+
+.closeButton{ 
+    color:black;
+    margin-right:0.4rem; 
+    cursor:default;
+
+ 
+} 
+
+
+.bookContainer { 
+    height:5rem; 
+    width: 5rem;
+} 
+
+.loading{ 
+    display:grid;   
+    grid-template-columns: repeat(2, 1fr); 
+    justify-items: center;
+} 
+
+.brownBit1, .brownBit2 {  
+    height: 4rem; 
+    width: 4rem; 
+    background-color: brown;   
+}  
+
+.brownBit1 { 
+    border-right: 0.5px whitesmoke solid; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+
+} 
+
+.brownBit2 { 
+    border-left: 0.5px whitesmoke solid; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+}  
+
+.page1, .page2 { 
+    background-color: whitesmoke; 
+    height: 3.5rem; 
+    width: 3.5rem;  
+
+}  
+
+.page1 { 
+color:black; 
+z-index: 3;
+
+} 
+
+.page2 { 
+color:black ; 
+z-index: 3;
+} 
+
+
+.extraPage1 { 
+    background-color: whitesmoke; 
+    height: 3.5rem; 
+    width: 3.5rem;  
+    border-right: 0.5px whitesmoke solid; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;  
+    z-index: 10; 
+    position: absolute;   
+    animation: flipPage 0.5s infinite linear; 
+    transform-origin: right;  
+    border: 1px black solid;
+    animation-delay: 1s; 
+    color:black
+
+}
+
+// .extraPage2 { 
+//     background-color: whitesmoke; 
+//     height: 3.5rem; 
+//     width: 3.5rem;  
+//     border-left: 0.5px whitesmoke solid; 
+//     display: flex; 
+//     align-items: center; 
+//     justify-content: flex-start; 
+//     z-index: 2; 
+//     position: absolute; 
+// }
+
+
+@keyframes flipPage {
+    from {transform: rotateY(0deg);}
+    to {transform:  rotateY(180deg) perspective(1200px) ;}
+  } 
+
+
+
+
+
+
+
+
+
