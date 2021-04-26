@@ -12,12 +12,14 @@
     left:0; 
     right:0; 
     // top:0; 
-    // bottom:0;
+    // bottom:0; 
+    background-color: $backgroundColor; 
+
 } 
 
 .wordPrompts { 
     display:flex;  
-    justify-content: space-around; 
+    justify-content: space-around;  
    
 
 }  
@@ -30,7 +32,8 @@
 
 .makeStoryForm{ 
     width:40vw;  
-    background-color: $backgroundColor;
+    background-color: $backgroundColor; 
+    
 }
 
 textArea{ 
@@ -80,7 +83,8 @@ textArea{
     display:grid; 
     row-gap:20%;   
     grid-template-columns: repeat(3, 1fr); 
-    justify-items: center;
+    justify-items: center; 
+    margin-top:3rem
 
 }  
 
@@ -95,7 +99,16 @@ textArea{
 
 .bookContainer { 
     height:5rem; 
-    width: 5rem;
+    width: 5rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 } 
 
 .loading{ 
@@ -162,24 +175,32 @@ z-index: 3;
 
 }
 
-// .extraPage2 { 
-//     background-color: whitesmoke; 
-//     height: 3.5rem; 
-//     width: 3.5rem;  
-//     border-left: 0.5px whitesmoke solid; 
-//     display: flex; 
-//     align-items: center; 
-//     justify-content: flex-start; 
-//     z-index: 2; 
-//     position: absolute; 
-// }
-
 
 @keyframes flipPage {
     from {transform: rotateY(0deg);}
     to {transform:  rotateY(180deg) perspective(1200px) ;}
+  }  
+
+  footer { 
+    position: fixed;
+    bottom: 8%; 
+    left:80%;
+    width: 20%;
   } 
 
+  .storyPage { 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center;
+  }
+ 
+  .makeStoryButton { 
+      font-size: 1.2rem; 
+    //   margin:0; 
+      padding:0.5rem 2rem 
+
+  }
 
 
 

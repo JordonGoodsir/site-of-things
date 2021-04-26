@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../../config/store";
 
-import MakeStory from "./makeStory";
+import MakeStory from "./makeStory"; 
+import StoryLoadingAnimation from "./StoryLoadingAnimation"
 import { getWord, getStory, postStory } from "../../services/storyServices";
 import api from "../../config/api"; 
 
@@ -10,7 +11,8 @@ const Story = () => {
   const { store, dispatch } = useGlobalState();
   const { words,storyMenuStatus } = store;
 
-  let [stories, setStories] = useState([]);
+  let [stories, setStories] = useState([]); 
+  let [loading,setLoading]= useState(false)
 
   useEffect(() => {
     extractStories();
@@ -19,15 +21,18 @@ const Story = () => {
 
   const openCreateMenu = async () => { 
 
-    if (!storyMenuStatus) { 
-        let tempWordStore = [];
+    if (!storyMenuStatus) {  
+      setLoading(true)
+        let tempWordStore = []; 
         for (let i = 0; i < 5; i++) {
          tempWordStore.push(await getWord());
         }
         dispatch({
           type: "setWords",
           data: tempWordStore,
-        }); 
+        });  
+        setLoading(false)
+
     }
 
 
@@ -56,8 +61,8 @@ if(storyMenuStatus) {
   };
 
   return (
-    <div>
-      <h1>story page</h1>
+    <div class="storyPage">
+      <h1>Create Your Story</h1>
       <div>{storyMenuStatus ? <MakeStory /> : ""} 
       </div> 
       
@@ -73,33 +78,16 @@ if(storyMenuStatus) {
         );
       })} 
       </div> 
-      <button onClick={openCreateMenu}>make Story</button>  
+       
 
-     <div class="bookContainer">
-      <div class="loading"> 
-     
-      <div class="brownBit1"> 
-      <div class="page1">  
-      ------------------------------
-      </div> 
+      {loading? <StoryLoadingAnimation/> : ""}  
+      {/* <StoryLoadingAnimation/> */}
+      <footer> 
+       
+      <button class="makeStoryButton" onClick={openCreateMenu}>Create Story</button>   
 
-      <div class="extraPage1"> 
-        ------------------------------  
-      </div> 
-      </div> 
+      </footer>
       
-      <div class="brownBit2">  
-      
-      <div class="page2"> 
-      ------------------------------
-      </div>  
-
-
-      </div>
-     
-      </div>  
-      </div> 
-
     </div> 
   );
 };
